@@ -1,7 +1,10 @@
 # Next-Shynet
 
-A library for integrating [Shynet](https://github.com/milesmcc/shynet)
+A library for integrating [shynet](https://github.com/milesmcc/shynet)
 into your [next.js](https://nextjs.org/) project.
+
+It helps to easily use shynet in a single page application.
+The library also has declarations for typescript.
 
 ## Usage
 
@@ -25,3 +28,7 @@ const YourApp = ({ Component, pageProps }) => {
     )
 }
 ```
+
+## Authors
+
+- Ivan Reshetnikov <ordinarydev@protonmail.com>
