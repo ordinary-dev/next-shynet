@@ -1,7 +1,6 @@
 import React from "react"
 import Script from "next/script"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
 
 export interface ShynetProps {
     scriptSrc: string
@@ -16,7 +15,7 @@ export default function Shynet(props: ShynetProps) {
         if (window["Shynet"]) window["Shynet"].newPageLoad()
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         sendData()
     }, [router.asPath, router.locale])
 
