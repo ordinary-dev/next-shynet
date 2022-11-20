@@ -22,8 +22,12 @@ export default function Shynet(props: ShynetProps) {
     return <Script src={props.scriptSrc} onLoad={() => sendData()} />
 }
 
+interface ShynetScript {
+    newPageLoad: () => void
+}
+
 declare global {
     interface Window {
-        Shynet: any
+        Shynet?: ShynetScript
     }
 }
