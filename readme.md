@@ -11,7 +11,7 @@ The library also has declarations for typescript.
 Install this library:
 
 ```bash
-npm install --save-dev next-shynet
+npm install next-shynet
 ```
 
 Change your `_app.js`:
