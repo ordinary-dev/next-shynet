@@ -1,0 +1,36 @@
+{
+    "name": "next-shynet",
+    "version": "1.0.2",
+    "description": "A library for integrating Shynet into your next.js project",
+    "repository": "git@github.com:alt-web/next-shynet.git",
+    "prettier": "@alt-web/prettier-config",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc"
+    },
+    "keywords": [
+        "shynet"
+    ],
+    "author": "Ivan Reshetnikov <ordinarydev@protonmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@alt-web/prettier-config": "^0.0.2",
+        "@types/node": "^18.11.9",
+        "@types/react": "^18.0.25",
+        "@types/react-dom": "^18.0.9",
+        "next": "^13.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "typescript": "^4.9.3"
+    },
+    "peerDependencies": {
+        "next": "^13.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
+}
