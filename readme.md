@@ -29,6 +29,15 @@ const YourApp = ({ Component, pageProps }) => {
 }
 ```
 
+## How to build
+
+```bash
+npm install
+npm run build
+```
+
+The generated files will be in the `/dist` directory.
+
 ## Authors
 
 - Ivan Reshetnikov <ordinarydev@protonmail.com>
