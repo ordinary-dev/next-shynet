@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 
 export interface ShynetProps {
     scriptSrc: string
+    imgSrc?: string
 }
 
 // Shynet - privacy-friendly web analytics
@@ -19,7 +20,27 @@ export default function Shynet(props: ShynetProps) {
         sendData()
     }, [router.asPath, router.locale])
 
-    return <Script src={props.scriptSrc} onLoad={() => sendData()} />
+    return (
+        <>
+            <Script src={props.scriptSrc} onLoad={() => sendData()} />
+            {props.imgSrc && (
+                <noscript>
+                    <img
+                        src={props.imgSrc}
+                        width="1"
+                        height="1"
+                        loading="lazy"
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            opacity: 0,
+                        }}
+                    />
+                </noscript>
+            )}
+        </>
+    )
 }
 
 interface ShynetScript {

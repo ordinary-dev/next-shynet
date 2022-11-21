@@ -22,12 +22,16 @@ Change your `_app.js`:
 const YourApp = ({ Component, pageProps }) => {
     return (
         <div>
-+           <Shynet scriptSrc="http://your-shynet-instance/xyz/index.js" />
++           <Shynet
++               scriptSrc="https://your-shynet-instance/.../index.js"
++               imgSrc="https://your-shynet-instance/.../pixel.gif" />
             <Component {...pageProps} />
         </div>
     )
 }
 ```
+
+The link to the tracking pixel is optional.
 
 ## How to build
 
