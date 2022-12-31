@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 export interface ShynetProps {
     scriptSrc: string
     imgSrc?: string
+    productionOnly?: boolean
 }
 
 // Shynet - privacy-friendly web analytics
@@ -12,6 +13,7 @@ export interface ShynetProps {
 export default function Shynet(props: ShynetProps) {
     const router = useRouter()
 
+    // Sends information about the current page
     const sendData = () => {
         if (window["Shynet"]) window["Shynet"].newPageLoad()
     }
@@ -19,6 +21,12 @@ export default function Shynet(props: ShynetProps) {
     React.useEffect(() => {
         sendData()
     }, [router.asPath, router.locale])
+
+    // Do not load script if it is not a production environment,
+    // or script loading is not allowed in any environment
+    const allowLoading =
+        !props.productionOnly || process.env.NODE_ENV === "production"
+    if (!allowLoading) return <></>
 
     return (
         <>

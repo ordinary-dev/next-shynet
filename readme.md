@@ -33,6 +33,9 @@ const YourApp = ({ Component, pageProps }) => {
 
 The link to the tracking pixel is optional.
 
+To prevent the script from being loaded during development,
+you can set the `productionOnly` option to `true`.
+
 ## How to build
 
 ```bash
