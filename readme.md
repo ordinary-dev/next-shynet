@@ -33,8 +33,11 @@ const YourApp = ({ Component, pageProps }) => {
 
 The link to the tracking pixel is optional.
 
-To prevent the script from being loaded during development,
-you can set the `productionOnly` option to `true`.
+By default, the script is not loaded during development.
+To force the script to be included, add the `ignoreEnv` option:
+```typescript
+<Shynet scriptSrc="" ignoreEnv />
+```
 
 ## How to build
 

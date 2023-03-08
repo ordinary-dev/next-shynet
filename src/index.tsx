@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 export interface ShynetProps {
     scriptSrc: string
     imgSrc?: string
-    productionOnly?: boolean
+    ignoreEnv?: boolean
 }
 
 // Shynet - privacy-friendly web analytics
@@ -25,7 +25,7 @@ export default function Shynet(props: ShynetProps) {
     // Do not load script if it is not a production environment,
     // or script loading is not allowed in any environment
     const allowLoading =
-        !props.productionOnly || process.env.NODE_ENV === "production"
+        props.ignoreEnv || process.env.NODE_ENV === "production"
     if (!allowLoading) return <></>
 
     return (
