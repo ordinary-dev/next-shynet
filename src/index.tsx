@@ -10,7 +10,7 @@ export interface ShynetProps {
 
 // Shynet - privacy-friendly web analytics
 // https://github.com/milesmcc/shynet
-export default function Shynet(props: ShynetProps) {
+export default function Shynet({scriptSrc, imgSrc, ignoreEnv}: ShynetProps) {
     const router = useRouter()
 
     // Sends information about the current page
@@ -24,32 +24,27 @@ export default function Shynet(props: ShynetProps) {
     }, [router])
 
     // Do not load script if it is not a production environment,
-    // or script loading is not allowed in any environment
-    const allowLoading =
-        props.ignoreEnv || process.env.NODE_ENV === "production"
+    // or script loading is not allowed in any environment.
+    const allowLoading = ignoreEnv || process.env.NODE_ENV === "production"
     if (!allowLoading) return <></>
 
-    return (
-        <>
-            <Script src={props.scriptSrc} onLoad={() => sendData()} />
-            {props.imgSrc && (
-                <noscript>
-                    <img
-                        src={props.imgSrc}
-                        width="1"
-                        height="1"
-                        loading="lazy"
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            opacity: 0,
-                        }}
-                    />
-                </noscript>
-            )}
-        </>
-    )
+    return <>
+        <Script src={scriptSrc} onLoad={() => sendData()} />
+        {imgSrc && <noscript>
+            <img
+                src={imgSrc}
+                width="1"
+                height="1"
+                loading="lazy"
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    opacity: 0,
+                }}
+            />
+        </noscript>}
+    </>
 }
 
 interface ShynetScript {
