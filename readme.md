@@ -16,26 +16,24 @@ npm install next-shynet
 
 Change your `_app.js`:
 
-```diff
-+import Shynet from "next-shynet"
+```jsx
+import Shynet from "next-shynet"
 
-const YourApp = ({ Component, pageProps }) => {
-    return (
-        <div>
-+           <Shynet
-+               scriptSrc="https://your-shynet-instance/.../index.js"
-+               imgSrc="https://your-shynet-instance/.../pixel.gif" />
-            <Component {...pageProps} />
-        </div>
-    )
-}
+const YourApp = ({ Component, pageProps }) => (
+    <div>
+        <Shynet
+            scriptSrc="https://your-shynet-instance/.../index.js"
+            imgSrc="https://your-shynet-instance/.../pixel.gif" />
+        <Component {...pageProps} />
+    </div>
+)
 ```
 
 The link to the tracking pixel is optional.
 
 By default, the script is not loaded during development.
 To force the script to be included, add the `ignoreEnv` option:
-```typescript
+```jsx
 <Shynet scriptSrc="" ignoreEnv />
 ```
 
