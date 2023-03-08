@@ -10,7 +10,7 @@ export interface ShynetProps {
 
 // Shynet - privacy-friendly web analytics
 // https://github.com/milesmcc/shynet
-export default function Shynet({ scriptSrc, imgSrc, ignoreEnv }: ShynetProps): React.FC {
+export default function Shynet({ scriptSrc, imgSrc, ignoreEnv }: ShynetProps): JSX.Element {
     const router = useRouter()
 
     // Sends information about the current page
