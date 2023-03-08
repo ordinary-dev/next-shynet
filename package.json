@@ -12,7 +12,8 @@
     "scripts": {
         "build": "npm run build:esm && npm run build:cjs",
         "build:esm": "tsc",
-        "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+        "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+        "lint": "eslint src/index.tsx"
     },
     "keywords": [
         "shynet"
@@ -23,10 +24,17 @@
         "@types/node": "^18.11.9",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.9",
+        "@typescript-eslint/eslint-plugin": "^5.54.1",
+        "eslint": "^8.35.0",
+        "eslint-config-standard-with-typescript": "^34.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^15.6.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.32.2",
         "next": "^13.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "typescript": "^4.9.3"
+        "typescript": "^4.9.5"
     },
     "peerDependencies": {
         "next": "^13.0.0",

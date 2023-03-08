@@ -1,6 +1,6 @@
-import React from "react"
-import Script from "next/script"
-import { useRouter } from "next/router"
+import React from 'react'
+import Script from 'next/script'
+import { useRouter } from 'next/router'
 
 export interface ShynetProps {
     scriptSrc: string
@@ -10,34 +10,36 @@ export interface ShynetProps {
 
 // Shynet - privacy-friendly web analytics
 // https://github.com/milesmcc/shynet
-export default function Shynet({scriptSrc, imgSrc, ignoreEnv}: ShynetProps) {
+export default function Shynet({ scriptSrc, imgSrc, ignoreEnv }: ShynetProps): React.FC {
     const router = useRouter()
 
     // Sends information about the current page
-    const sendData = () => {
-        if (window["Shynet"]) window["Shynet"].newPageLoad()
+    function sendData(): void {
+        if (window.Shynet !== undefined) window.Shynet.newPageLoad()
     }
 
     React.useEffect(() => {
-        router.events.on("routeChangeComplete", sendData)
-        return () => router.events.off("routeChangeComplete", sendData)
+        router.events.on('routeChangeComplete', sendData)
+        return () => {
+            router.events.off('routeChangeComplete', sendData)
+        }
     }, [router])
 
     // Do not load script if it is not a production environment,
     // or script loading is not allowed in any environment.
-    const allowLoading = ignoreEnv || process.env.NODE_ENV === "production"
+    const allowLoading = ignoreEnv === true || process.env.NODE_ENV === 'production'
     if (!allowLoading) return <></>
 
     return <>
-        <Script src={scriptSrc} onLoad={() => sendData()} />
-        {imgSrc && <noscript>
+        <Script src={scriptSrc} onLoad={() => { sendData() }} />
+        {imgSrc !== undefined && <noscript>
             <img
                 src={imgSrc}
-                width="1"
-                height="1"
-                loading="lazy"
+                width='1'
+                height='1'
+                loading='lazy'
                 style={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     opacity: 0,
