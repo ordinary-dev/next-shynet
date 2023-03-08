@@ -19,8 +19,9 @@ export default function Shynet(props: ShynetProps) {
     }
 
     React.useEffect(() => {
-        sendData()
-    }, [router.asPath, router.locale])
+        router.events.on("routeChangeComplete", sendData)
+        return () => router.events.off("routeChangeComplete", sendData)
+    }, [router])
 
     // Do not load script if it is not a production environment,
     // or script loading is not allowed in any environment
