@@ -3,17 +3,36 @@ import Script from 'next/script'
 import { useRouter } from 'next/router'
 
 export interface ShynetProps {
+    /**
+     * Link to your shynet script.
+     * @example
+     * "https://shynet.org/.../index.js"
+     */
     scriptSrc: string
+    /**
+     * Optional link to tracking pixel.
+     * @example
+     * "https://shynet.org/.../pixel.gif"
+     */
     imgSrc?: string
+    /** Set this parameter to `true`, if you want to load shynet even during development. */
     ignoreEnv?: boolean
 }
 
-// Shynet - privacy-friendly web analytics
-// https://github.com/milesmcc/shynet
+/**
+ * Shynet - privacy-friendly web analytics.
+ *
+ * Loads script and tracking pixel, calls Shynet.newPageLoad() on path change.
+ * This component was developed for pages router.
+ *
+ * @see {@link https://github.com/milesmcc/shynet}
+ */
 export default function Shynet({ scriptSrc, imgSrc, ignoreEnv }: ShynetProps): JSX.Element {
     const router = useRouter()
 
-    // Sends information about the current page
+    /**
+     * Send information about the current page.
+     */
     function sendData(): void {
         if (window.Shynet !== undefined) window.Shynet.newPageLoad()
     }
@@ -50,9 +69,11 @@ export default function Shynet({ scriptSrc, imgSrc, ignoreEnv }: ShynetProps): J
 }
 
 interface ShynetScript {
+    /** This function should be called on path change. */
     newPageLoad: () => void
 }
 
+// Typescript hack
 declare global {
     interface Window {
         Shynet?: ShynetScript
