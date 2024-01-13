@@ -1,25 +1,19 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'plugin:react/recommended',
-    'standard-with-typescript'
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json']
+    project: ['./tsconfig.json'],
   },
   plugins: [
-    'react'
+    'react',
   ],
-  rules: {
-    "@typescript-eslint/comma-dangle": ["warn", "always-multiline"],
-    "@typescript-eslint/space-before-function-paren": ["warn", "never"],
-    "@typescript-eslint/indent": ["warn", 4]
-  }
+  rules: {}
 }
