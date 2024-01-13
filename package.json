@@ -16,7 +16,11 @@
         "lint": "eslint src/index.tsx"
     },
     "keywords": [
-        "shynet"
+        "shynet",
+        "analytics",
+        "monitoring",
+        "nextjs",
+        "next.js"
     ],
     "author": "Ivan Reshetnikov <ordinarydev@protonmail.com>",
     "license": "MIT",
