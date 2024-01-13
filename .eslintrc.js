@@ -15,5 +15,11 @@ module.exports = {
   plugins: [
     'react',
   ],
-  rules: {}
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  parser: "@typescript-eslint/parser",
+  rules: {},
 }
