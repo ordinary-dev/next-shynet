@@ -14,6 +14,29 @@ Install this library:
 npm install next-shynet
 ```
 
+### App router
+
+Change your `app/layout.tsx`:
+
+```jsx
+import { ShynetForAppRouter } from "next-shynet"
+
+export default async function RootLayout({children}) {
+    return (
+        <html>
+            <body>
+                <ShynetForAppRouter
+                    scriptSrc="https://your-shynet-instance/.../index.js"
+                    imgSrc="https://your-shynet-instance/.../pixel.gif"
+                />
+            </body>
+        </html>
+    )
+}
+```
+
+### Pages router
+
 Change your `_app.js`:
 
 ```jsx
